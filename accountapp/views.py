@@ -5,5 +5,7 @@ from django.shortcuts import render
 
 def hello_world(request):
     # return HttpResponse('Hello World!')
-
+    if request.method == "POST":
+        input_data = request.POST.get('input_data')
+        return render(request, 'accountapp/hello_world.html', context={'message':input_data})
     return render(request, 'accountapp/hello_world.html')
