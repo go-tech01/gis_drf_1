@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="my-5">
     <form action="/accounts/hello_world/" method="post">
         {% csrf_token %}
         <input type="text" name="input_data">
@@ -8,5 +9,5 @@
     </form>
 
     <h1>{{ message }}</h1>
-
+</div>
 {% endblock %}
