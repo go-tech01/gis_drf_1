@@ -6,6 +6,12 @@
         <span>nav1</span>
         <span>nav2</span>
         <span>nav3</span>
-        <span><a href="{% url 'accountapp:create' %}">Sign Up</a></span>
+        <span>
+            {% if not user.is_authenticated %}
+            <a href="{% url 'accountapp:create' %}">Login</a>
+            {% else %}
+            <a href="{% url 'accountapp:create' %}">Logout</a>
+            {% endif %}
+        </span>
     </div>
 </div>

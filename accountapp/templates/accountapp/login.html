@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <div class="my-5">
-        <form action="{% url 'accountapp:create' %}" method="post">
+    <div>
+        <form action="{% url 'accountapp:login' %}" method="post">
             {% csrf_token %}
             {{ form }}
             <input type="submit" class="btn btn-dark rounded-pill px-5">
         </form>
     </div>
-
 {% endblock %}
