@@ -3,7 +3,11 @@
 <div>
     <!-- Profile 들어가는 부분 -->
     <div class="my-5">
-        {% if target_user.profile.image %}
+        {% if target_user.profile.thumb %}
+        <!-- object-fit: cover; 비율이 망가지지 않음-->
+        <img style="width: 13rem; height: 13rem; border-radius: 20rem; object-fit: cover;"
+             src="{{ target_user.profile.thumb.url }}" alt="image">
+        {% elif target_user.profile.image %}
         <!-- object-fit: cover; 비율이 망가지지 않음-->
         <img style="width: 13rem; height: 13rem; border-radius: 20rem; object-fit: cover;"
              src="{{ target_user.profile.image.url }}" alt="image">
