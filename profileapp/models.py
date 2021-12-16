@@ -25,18 +25,18 @@ class Profile(models.Model):
         """
         if self.image:                          # 먼저 사용자가 이미지를 업로드했는지 확인
             img = Image.open(self.image)        # PILLOW에서 제공하는 Image 클래스 이용 이미지를 얻어줌
+            output = BytesIO                    # 이미지 프로세싱 결과물을 임시저장해놓을 메모리를 할당
             width, height = img.size            # 이미지 사이즈를 확인하고 비율을 계산
             ratio = height/width
             pixel = min(250, width)
-            output = BytesIO                    # 이미지 프로세싱 결과물을 임시저장해놓을 메모리를 할당
             img = img.convert('RGB')            # img.convert & resize -> 원하는 이미지 사이지로 이미지롤 변형
-            img.thumbnail(pixel, int(pixel*ratio))
-            img.save(output, format='JPEG', quality=95) # 이미지를 이전에 만든 메모리 공간에 저장
+            img.thumbnail((pixel, round(pixel * ratio)))
+            img.save(output, format='JPEG', quality=95)     # 이미지를 이전에 만든 메모리 공간에 저장
             # output.seek(0) -> 이미지를 저장하면서 이동한 메모리 포인터를 다시 첫번째 위치로 이동(InMemoryUploadedFile에서 이미지를 읽게 하도록 위함)18
             output.seek(0)
             # 장고에서 제공하는 메모리 내 이미지 파일을 장고 파일 객체로 인식하게 도와주는 InMemoryUploadedFile 클래스를 이용하여 이미지를 읽고
             # self.thumb 컬럼에 해당 변형된 이미지를 할당합니다
-            self.thumb = InMemoryUploadedFile(output, 'ImageFiled', self.image.name,
+            self.thumb = InMemoryUploadedFile(output, 'ImageField', self.image.name,
                                               'image/jpeg', sys.getsizeof(output), None)
 
 
