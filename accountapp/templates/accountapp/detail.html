@@ -6,7 +6,7 @@
         {% if target_user.profile.image %}
         <!-- object-fit: cover; 비율이 망가지지 않음-->
         <img style="width: 13rem; height: 13rem; border-radius: 20rem; object-fit: cover;"
-             src="{{ target_user.profile.image.url }}" alt="No image">
+             src="{{ target_user.profile.image.url }}" alt="image">
         {% endif %}
         <h1>{{ target_user.profile.nickname }}</h1>
         <h4>{{ target_user.profile.message }}</h4>
