@@ -29,6 +29,3 @@ class ProfileUpdateView(UpdateView):
     template_name = 'profileapp/update.html'
     def get_success_url(self):
         return reverse('accountapp:detail', kwargs={'pk':self.object.owner.pk})
-    
-    # success_url = 
-    # get_success_url() 차이점?
