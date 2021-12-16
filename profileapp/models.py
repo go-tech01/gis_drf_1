@@ -25,7 +25,7 @@ class Profile(models.Model):
         """
         if self.image:                          # 먼저 사용자가 이미지를 업로드했는지 확인
             img = Image.open(self.image)        # PILLOW에서 제공하는 Image 클래스 이용 이미지를 얻어줌
-            output = BytesIO                    # 이미지 프로세싱 결과물을 임시저장해놓을 메모리를 할당
+            output = BytesIO()                  # 이미지 프로세싱 결과물을 임시저장해놓을 메모리를 할당
             width, height = img.size            # 이미지 사이즈를 확인하고 비율을 계산
             ratio = height/width
             pixel = min(250, width)
