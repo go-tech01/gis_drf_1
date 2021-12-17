@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="max-width: 400px; margin: auto;">
+    <!-- 게시글 들어가는 부분 -->
+    <div class="my-5">
+        <h1>{{ target_article.title }}</h1>
+        <h4>{{ target_article.created_at }}</h4>
+        {% if target_article.image %}
+        <!-- object-fit: cover; 비율이 망가지지 않음-->
+        <img style="border-radius: 2rem; width: 100%"
+             src="{{ target_article.image.url }}" alt="image">
+        {% endif %}
+    </div>
+    <div>
+        {{ target_article.content|safe }}
+    </div>
+    <div>
+    <!-- 만약 페이지가 본인이 작성한 게시글이 맞다면 수정 및 삭제 페이지 시각화 -->
+    </div>
+</div>
+{% endblock %}
