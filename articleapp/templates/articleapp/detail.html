@@ -16,6 +16,10 @@
     </div>
     <div>
     <!-- 만약 페이지가 본인이 작성한 게시글이 맞다면 수정 및 삭제 페이지 시각화 -->
+        {% if target_article.writer == user %}
+        <div><a href="{% url 'articleapp:update' pk=target_article.pk %}">Update Article</a></div>
+        <div><a href="{% url 'articleapp:delete' pk=target_article.pk %}">Delete Article</a></div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
