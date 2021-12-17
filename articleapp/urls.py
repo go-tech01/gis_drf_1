@@ -1,6 +1,4 @@
 from django.urls import path
-from django.views.generic import TemplateView
-
 from articleapp.views import ArticleCreateView
 
 app_name = 'articleapp'
