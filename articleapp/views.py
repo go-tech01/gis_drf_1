@@ -42,11 +42,11 @@ class ArticleDeleteView(DeleteView):
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'articleapp/delete.html'
 
-class MagicGridTemplateView(TemplateView):
-    template_name = 'articleapp/magic_grid.html'
+# class MagicGridTemplateView(TemplateView):
+#     template_name = 'articleapp/magic_grid.html'
 
-# class ArticleListView(ListView):
-#     model = Article
-#     context_object_name = 'article_list'
-#     template_name = 'articleapp/list.html'
-#     paginate_by = 3
+class ArticleListView(ListView):
+    model = Article
+    context_object_name = 'article_list'
+    template_name = 'articleapp/list.html'
+    paginate_by = 3
